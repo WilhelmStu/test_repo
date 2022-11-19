@@ -36,7 +36,7 @@ public class Test1Test {
 
   @Test
   public void test1() {
-    driver.get("http://localhost:8080/");
+    driver.get("http://127.0.0.1:8080/");
     driver.manage().window().setSize(new Dimension(1047, 855));
     // Test before click
     driver.findElement(By.id("button")).click();
@@ -45,7 +45,7 @@ public class Test1Test {
   }
   @Test
   public void test2() {
-    driver.get("http://localhost:8080/");
+    driver.get("http://127.0.0.1:8080/");
     driver.manage().window().setSize(new Dimension(1047, 855));
     driver.findElement(By.cssSelector("html")).click();
     // Test before click
