@@ -48,7 +48,7 @@ public class Test1Test {
     driver.findElement(By.id("button")).click();
 
     // Test after click
-    assertEquals("Test 321", driver.findElement(By.id("1")).getText());
+    assertEquals("Test 999", driver.findElement(By.id("1")).getText());
     assertEquals("Test 42", driver.findElement(By.id("2")).getText());
   }
 }
