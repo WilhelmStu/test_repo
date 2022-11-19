@@ -32,7 +32,16 @@ public class BookController {
 
     @GetMapping("/")
     public String hello() {
-        return "Hello World!";
+        return " <!DOCTYPE html>\n" +
+                "<html>\n" +
+                "<body>\n" +
+                "\n" +
+                "<h1>Hello world!</h1>\n" +
+                "<p>input</p>\n" +
+                " <button type=\"button\">Click Me!</button> \n" +
+                "\n" +
+                "</body>\n" +
+                "</html> ";
     }
 
     @GetMapping("/findbyid/{id}")
