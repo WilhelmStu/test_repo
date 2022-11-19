@@ -26,6 +26,14 @@ class TestProjectApplicationTests {
     }
 
     @Test
+    void anotherTest(){
+        Book book = new Book();
+        book.setId(999);
+        book.setTitle("Test");
+        assertEquals(999, book.getId());
+    }
+
+    @Test
     void testFail(){
         //fail();
     }
