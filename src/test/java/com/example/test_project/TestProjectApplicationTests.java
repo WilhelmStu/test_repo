@@ -25,4 +25,9 @@ class TestProjectApplicationTests {
         assertEquals("the book", book.getTitle());
     }
 
+    @Test
+    void testFail(){
+        fail();
+    }
+
 }
