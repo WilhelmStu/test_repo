@@ -9,21 +9,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.JavascriptExecutor;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
-import java.util.*;
-
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class Test1Test {
-  private WebDriver driver;
-  private Map<String, Object> vars;
-  JavascriptExecutor js;
   @LocalServerPort
   private int port;
-
+  private WebDriver driver;
 
   @BeforeEach
   public void setUp() {
