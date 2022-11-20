@@ -10,12 +10,21 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
+
 import java.util.*;
 
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class Test1Test {
   private WebDriver driver;
   private Map<String, Object> vars;
   JavascriptExecutor js;
+  @LocalServerPort
+  private int port;
+
+
   @BeforeEach
   public void setUp() {
     //System.setProperty("webdriver.gecko.driver", "C:\\Users\\willi\\OneDrive\\UNI\\UNI WS 2022_23\\Advanced Software Engineering\\test_project\\geckodriver.exe");
@@ -36,7 +45,7 @@ public class Test1Test {
 
   @Test
   public void test1() {
-    driver.get("http://127.0.0.1:8080/");
+    driver.get("http://localhost:" + port + "/");
     driver.manage().window().setSize(new Dimension(1047, 855));
     // Test before click
     driver.findElement(By.id("button")).click();
@@ -45,7 +54,7 @@ public class Test1Test {
   }
   @Test
   public void test2() {
-    driver.get("http://127.0.0.1:8080/");
+    driver.get("http://localhost:" + port + "/");
     driver.manage().window().setSize(new Dimension(1047, 855));
     driver.findElement(By.cssSelector("html")).click();
     // Test before click
