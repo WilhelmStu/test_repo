@@ -7,7 +7,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Build and unit test pipeline #
+name: Build and unit test pipeline ##
 
 on: #[push] # to run it on every push on any branch
   push:
