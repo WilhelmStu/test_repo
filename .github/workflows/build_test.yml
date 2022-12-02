@@ -27,7 +27,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        repository: test_repo/BE
         path: BE
     - name: Set up JDK 17
       uses: actions/setup-java@v3
