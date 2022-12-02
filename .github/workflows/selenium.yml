@@ -20,7 +20,7 @@ on: #[push] # to run it on every push on any branch
 jobs:
   unitTest:
    #if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    - uses: ./github/workflows/build_test.yml
+  - uses: ./github/workflows/build_test.yml
   build:
     name: Build and analyze
     needs: [build_test]
