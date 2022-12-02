@@ -33,7 +33,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         context: .
-        file: ./DockerfileDep
+        file: ./BE/DockerfileDep
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/test:latest
 
