@@ -11,8 +11,8 @@ name: Build and unit test pipeline ##
 
 on: #[push] # to run it on every push on any branch
   push:
-    branches:
-      - '!main'
+    branches-ignore:
+      - main
  # pull_request:
  #   types: [opened, synchronize, reopened]
 
