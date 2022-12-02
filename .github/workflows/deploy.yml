@@ -34,10 +34,11 @@ jobs:
       uses: docker/setup-buildx-action@v2
     - name: show tree
       run: tree
+    - run: dir
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
-        #context: .
+        context: ./BE
         file: ./DockerfileDep
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/test:latest
