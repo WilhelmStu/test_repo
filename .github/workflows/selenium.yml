@@ -7,7 +7,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Build and unit test pipeline ##
+name: Selenium tests
 
 on: #[push] # to run it on every push on any branch
   #workflow_run:
@@ -20,10 +20,10 @@ on: #[push] # to run it on every push on any branch
 jobs:
   unitTest:
    #if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    uses: ./.github/workflows/build_test.yml
+    - uses: .github/workflows/build_test.yml
   build:
     name: Build and analyze
-    needs: unitTest
+    needs: [build_test]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
