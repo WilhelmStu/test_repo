@@ -15,7 +15,7 @@ on: #[push] # to run it on every push on any branch
   #  types:
   #    - complete
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, reopened]
 
 jobs:
   unitTest:
