@@ -60,8 +60,8 @@ public class Test1Test {
     assertEquals("Test 42", driver.findElement(By.id("2")).getText());
   }
 
-  //@Test
-  //public void test3(){
-  //  fail();
-  //}
+  @Test
+  public void test3(){
+    fail();
+  }
 }
