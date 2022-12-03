@@ -57,4 +57,9 @@ public class Test1Test {
     assertEquals("Test 321", driver.findElement(By.id("1")).getText());
     assertEquals("Test 42", driver.findElement(By.id("2")).getText());
   }
+
+  @Test
+  public void test3(){
+    fail();
+  }
 }

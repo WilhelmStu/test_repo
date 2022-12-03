@@ -70,6 +70,8 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven
+    - name: show tree
+      run: tree
     - name: test
       working-directory: ./selenium
       run: mvn clean test
