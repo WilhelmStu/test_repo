@@ -45,6 +45,10 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
+    - name: show tree
+      run: tree
+    - name:
+      run: cd ./BE/
     - name: run spring server file
       run: mvn spring-boot:run
     - name: Test selenium
