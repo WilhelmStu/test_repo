@@ -12,7 +12,6 @@ on: #[push] # to run it on every push on any branch
   push:
     branches:
       - main
-      - dev
 defaults:
   run:
     working-directory: 'BE'
