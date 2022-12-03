@@ -45,11 +45,8 @@ jobs:
           ${{ runner.os }}-maven-
     - name: show tree
       run: tree
-    - name:
-      run: cd ./BE/
-    - name: show tree
-      run: tree
     - name: run spring server file
+      working-directory: ./BE
       run: mvn spring-boot:run
     - name: Test selenium
       #env:
