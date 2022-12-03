@@ -50,26 +50,26 @@ jobs:
       run: |
         mvn spring-boot:run -f ./BE/pom.xml &
         sleep 5
-    - name: Test selenium
-      #env:
-      #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-      #  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      uses: actions/checkout@v3
-      with:
-        path: 'selenium'
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Cache local Maven repository
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven
+    #- name: Test selenium
+    #  #env:
+    #  #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+    #  #  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    #  uses: actions/checkout@v3
+    #  with:
+    #    path: 'selenium'
+    #- name: Set up JDK 17
+    #  uses: actions/setup-java@v3
+    #  with:
+    #    java-version: '17'
+    #    distribution: 'temurin'
+    #    cache: maven
+    #- name: Cache local Maven repository
+    #  uses: actions/cache@v3
+    #  with:
+    #    path: ~/.m2/repository
+    #    key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+    #    restore-keys: |
+    #      ${{ runner.os }}-maven
     - name: show tree
       run: tree
     - name: test
