@@ -47,6 +47,8 @@ jobs:
       run: tree
     - name:
       run: cd ./BE/
+    - name: show tree
+      run: tree
     - name: run spring server file
       run: mvn spring-boot:run
     - name: Test selenium
