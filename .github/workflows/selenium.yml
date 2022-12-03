@@ -47,7 +47,9 @@ jobs:
       run: tree
     - name: run spring server file
       working-directory: ./BE
-      run: mvn spring-boot:run
+      run: |
+        mvn spring-boot:run
+        cd ..
     - name: Test selenium
       #env:
       #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
