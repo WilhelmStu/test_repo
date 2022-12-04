@@ -9,8 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.Dimension;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.server.LocalServerPort;
 
 //@SpringBootTest(classes = com.example.test_project.TestProjectApplication )
 //@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -25,6 +23,7 @@ public class Test1Test {
     //driver = new FirefoxDriver();
     //js = (JavascriptExecutor) driver;
     //vars = new HashMap<String, Object>();
+    System.out.println("Setup STEP #########");
     WebDriverManager.firefoxdriver().setup();
     FirefoxOptions options = new FirefoxOptions();
     options.addArguments("--no-sandbox");
@@ -39,6 +38,7 @@ public class Test1Test {
 
   @Test
   public void test1() {
+    System.out.println("Test1 STEP #########");
     driver.get("http://localhost:" + port + "/");
     driver.manage().window().setSize(new Dimension(1047, 855));
     // Test before click
@@ -59,4 +59,9 @@ public class Test1Test {
     assertEquals("Test 321", driver.findElement(By.id("1")).getText());
     assertEquals("Test 42", driver.findElement(By.id("2")).getText());
   }
+
+  //@Test
+  //public void test3(){
+  //  fail();
+  //}
 }

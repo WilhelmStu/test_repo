@@ -58,6 +58,34 @@
                     <executable>true</executable>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.7.6</version>
+                <configuration>
+                    <mutationEngine>descartes</mutationEngine>
+                    <mutationEngine>gregor</mutationEngine>
+                    <targetClasses>
+                        <param>com.example.test_project.*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>com.example.test_project.*</param>
+                    </targetTests>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>0.16</version>
+                    </dependency>
+                    <!--This dependency reduces the amount of mutation tests to one third?-->
+                    <!--dependency>
+                        <groupId>eu.stamp-project</groupId>
+                        <artifactId>descartes</artifactId>
+                        <version>1.3.2</version>
+                    </dependency-->
+                </dependencies>
+            </plugin>
         </plugins>
     </build>
 
