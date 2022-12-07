@@ -24,7 +24,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     //test should fail now!!
-    expect(app.title).toEqual('FE_MazeRunner_fail');
+    expect(app.title).toEqual('FE_MazeRunner');
   });
 
   it('should render title', () => {
