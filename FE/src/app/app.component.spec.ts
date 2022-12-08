@@ -33,4 +33,13 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain('FE_MazeRunner app is running!');
   });
+
+
+  afterAll(() => {
+    TestBed.resetTestingModule();
+  })
+ /*
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  }); */
 });

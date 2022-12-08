@@ -7,14 +7,33 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
+    plugins: [
+      require('karma-jasmine'),
+      require('karma-chrome-launcher'),
+      require('karma-firefox-launcher'),
+      require('karma-jasmine-html-reporter'),
+      require('karma-coverage'),
+      //require('angular-cli/plugins/karma'),
+      require('@angular-devkit/build-angular/plugins/karma'),
+      require('karma-typescript')
+    ],
+
 
     // frameworks to use
     // available frameworks: https://www.npmjs.com/search?q=keywords:karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', '@angular-devkit/build-angular', "karma-typescript"],
+
+    karmaTypescriptConfig: {
+      compilerOptions: {
+        module: "commonjs"
+      },
+      tsconfig: "./tsconfig.json",
+    },
 
 
     // list of files / patterns to load in the browser
     files: [
+      '**/*spec.ts'
     ],
 
 
@@ -26,13 +45,19 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://www.npmjs.com/search?q=keywords:karma-preprocessor
     preprocessors: {
+      "**/*.ts": "karma-typescript"
+      //'./src/test.ts': ['angular-cli']
+    },
+
+    mime: {
+      //'text/x-typescript': ['ts']
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://www.npmjs.com/search?q=keywords:karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', "karma-typescript"],
 
 
     // web server port
@@ -54,7 +79,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://www.npmjs.com/search?q=keywords:karma-launcher
-    browsers: ['Firefox', 'Chrome', 'ChromeHeadless', 'ChromeHeadlessCI'],
+    browsers: ['Firefox', 'Chrome', 'ChromeHeadlessCI'],
     customLaunchers: {
       ChromeHeadlessCI: {
         base: 'ChromeHeadless',
