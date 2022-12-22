@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Wed Dec 07 2022 14:10:41 GMT+0100 (Mitteleuropäische Normalzeit)
+// Generated on Thu Dec 08 2022 18:37:28 GMT+0100 (Mitteleuropäische Normalzeit)
 
 module.exports = function(config) {
   config.set({
@@ -7,33 +7,23 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
+    // frameworks to use
+    // available frameworks: https://www.npmjs.com/search?q=keywords:karma-adapter
+    frameworks: ['jasmine', '@angular-devkit/build-angular'],
+
+
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
-      require('karma-firefox-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
-      //require('angular-cli/plugins/karma'),
-      require('@angular-devkit/build-angular/plugins/karma'),
-      require('karma-typescript')
+      require('karma-requirejs'),
+      require('@angular-devkit/build-angular/plugins/karma')
     ],
-
-
-    // frameworks to use
-    // available frameworks: https://www.npmjs.com/search?q=keywords:karma-adapter
-    frameworks: ['jasmine', '@angular-devkit/build-angular', "karma-typescript"],
-
-    karmaTypescriptConfig: {
-      compilerOptions: {
-        module: "commonjs"
-      },
-      tsconfig: "./tsconfig.json",
-    },
-
 
     // list of files / patterns to load in the browser
     files: [
-      '**/*spec.ts'
+      { pattern: '**/*spec.ts', included: false }
     ],
 
 
@@ -45,20 +35,26 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://www.npmjs.com/search?q=keywords:karma-preprocessor
     preprocessors: {
-      "**/*.ts": "karma-typescript"
-      //'./src/test.ts': ['angular-cli']
-    },
-
-    mime: {
-      //'text/x-typescript': ['ts']
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://www.npmjs.com/search?q=keywords:karma-reporter
-    reporters: ['progress', "karma-typescript"],
+    reporters: ['progress'],
 
+    jasmineHtmlReporter: {
+      suppressAll: true // removes the duplicated traces
+    },
+
+    coverageReporter: {
+      dir: require('path').join(__dirname, './coverage/'),
+      subdir: '.',
+      reporters: [
+        { type: 'html' },
+        { type: 'text-summary' }
+      ]
+    },
 
     // web server port
     port: 9876,
@@ -79,14 +75,13 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://www.npmjs.com/search?q=keywords:karma-launcher
-    browsers: ['Firefox', 'Chrome', 'ChromeHeadlessCI'],
+    browsers: ['Chrome', 'Firefox', 'ChromeHeadless', 'ChromeHeadlessCI'],
     customLaunchers: {
       ChromeHeadlessCI: {
         base: 'ChromeHeadless',
         flags: ['--no-sandbox']
       }
     },
-
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

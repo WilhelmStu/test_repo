@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "FE_MazeRunner": {
+    "frontend": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/fe-maze-runner",
+            "allowedCommonJsDependencies": [
+              "jszip",
+              "devexpress-diagram",
+              "devexpress-gantt",
+              "devextreme-quill"
+
+            ],
+            "outputPath": "dist/frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -25,6 +32,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -60,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "FE_MazeRunner:build:production"
+              "browserTarget": "frontend:build:production"
             },
             "development": {
-              "browserTarget": "FE_MazeRunner:build:development"
+              "browserTarget": "frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "FE_MazeRunner:build"
+            "browserTarget": "frontend:build"
           }
         },
         "test": {
@@ -88,6 +96,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": []
