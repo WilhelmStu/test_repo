@@ -33,3 +33,5 @@ build/
 .vscode/
 /.mvn/wrapper/maven-wrapper.jar
 
+/selenium/target/classes/org/example/App.class
+/selenium/target/test-classes/org/example/Test1Test.class
