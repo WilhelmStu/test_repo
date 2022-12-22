@@ -19,7 +19,8 @@ module.exports = function(config) {
       require('karma-coverage'),
       require('karma-requirejs'),
       require('@angular-devkit/build-angular/plugins/karma'),
-      require('karma-junit-reporter')
+      require('karma-sonarqube-unit-reporter'),
+
     ],
 
     // list of files / patterns to load in the browser
@@ -42,19 +43,24 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://www.npmjs.com/search?q=keywords:karma-reporter
-    reporters: ['progress', 'junit'],
+    reporters: ['progress', 'sonarqubeUnit', 'coverage'],
 
     jasmineHtmlReporter: {
       suppressAll: true // removes the duplicated traces
     },
 
+    sonarQubeUnitReporter: {
+      sonarQubeVersion: 'LATEST',
+      outputFile: 'reports/report.xml',
+      testPaths: ['./src'],
+      testFilePattern: '.spec.js',
+      useBrowserName: false
+    },
+
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/'),
-      subdir: '.',
-      reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
-      ]
+      type : 'lcov',
+      dir : 'reports',
+      subdir : 'coverage'
     },
 
     junitReporter: {
