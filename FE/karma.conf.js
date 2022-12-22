@@ -18,7 +18,8 @@ module.exports = function(config) {
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
       require('karma-requirejs'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('@angular-devkit/build-angular/plugins/karma'),
+      require('karma-junit-reporter')
     ],
 
     // list of files / patterns to load in the browser
@@ -41,7 +42,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://www.npmjs.com/search?q=keywords:karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'junit'],
 
     jasmineHtmlReporter: {
       suppressAll: true // removes the duplicated traces
@@ -55,6 +56,13 @@ module.exports = function(config) {
         { type: 'text-summary' }
       ]
     },
+
+    junitReporter: {
+      outputDir: '../reports/junit', // results will be saved as $outputDir/$browserName.xml
+      outputFile: undefined, // if included, results will be saved as $outputDir/$browserName/$outputFile
+      useBrowserName: false // add browser name to report and classes names
+    },
+
 
     // web server port
     port: 9876,
