@@ -53,7 +53,7 @@ public class Test1Test {
   @Test
   public void test2() {
       for (int i = 0; i < 5; i++) {
-          driver.get("https://vdsm.stulpinger.at");
+          driver.get("https://rs1221p2.stulpinger.at:5001/");
           driver.manage().window().setSize(new Dimension(918, 764));
           driver.findElement(By.name("username")).sendKeys("wds");
           driver.findElement(By.cssSelector(".tab")).click();
