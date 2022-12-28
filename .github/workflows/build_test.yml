@@ -32,7 +32,7 @@ jobs:
       with:
         fetch-depth: 0
     - name: test traceroute
-      run: traceroute orf.at
+      run: tracepath orf.at
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
