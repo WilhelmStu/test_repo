@@ -33,7 +33,7 @@ public class Test1Test {
     options.addArguments("--disable-dev-shm-usage");
     options.addArguments("--headless");
     driver = new FirefoxDriver(options);
-    driver.manage().timeouts().implicitlyWait(Duration.ofMillis(2000));
+    driver.manage().timeouts().implicitlyWait(Duration.ofMillis(5000));
   }
   @AfterEach
   public void tearDown() {
