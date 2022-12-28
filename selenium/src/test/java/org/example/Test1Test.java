@@ -10,6 +10,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.Dimension;
 
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
 //@SpringBootTest(classes = com.example.test_project.TestProjectApplication )
 //@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class Test1Test {
@@ -30,34 +33,37 @@ public class Test1Test {
     options.addArguments("--disable-dev-shm-usage");
     options.addArguments("--headless");
     driver = new FirefoxDriver(options);
+    driver.manage().timeouts().implicitlyWait(Duration.ofMillis(2000));
   }
   @AfterEach
   public void tearDown() {
     driver.quit();
   }
 
-  @Test
-  public void test1() {
-    System.out.println("Test1 STEP #########");
-    driver.get("http://localhost:" + port + "/");
-    driver.manage().window().setSize(new Dimension(1047, 855));
-    // Test before click
-    driver.findElement(By.id("button")).click();
-    // Test after click
-    assertEquals("Test 42", driver.findElement(By.id("2")).getText());
-  }
+  //@Test
+  //public void test1() {
+  //  System.out.println("Test1 STEP #########");
+  //  driver.get("http://localhost:" + port + "/");
+  //  driver.manage().window().setSize(new Dimension(1047, 855));
+  //  // Test before click
+  //  driver.findElement(By.id("button")).click();
+  //  // Test after click
+  //  assertEquals("Test 42", driver.findElement(By.id("2")).getText());
+  //}
   @Test
   public void test2() {
-    driver.get("https://vdsm.stulpinger.at/");
-    for (int i = 0; i <3; i++) {
-      driver.manage().window().setSize(new Dimension(918, 764));
-      driver.findElement(By.name("username")).sendKeys("wds");
-      driver.findElement(By.cssSelector(".tab")).click();
-      driver.findElement(By.cssSelector(".login-btn-spinner")).click();
-      driver.findElement(By.name("current-password")).click();
-      driver.findElement(By.name("current-password")).sendKeys("1234");
-      driver.findElement(By.cssSelector(".login-btn-spinner")).click();
-    }
+      for (int i = 0; i < 5; i++) {
+          driver.get("https://vdsm.stulpinger.at");
+          driver.manage().window().setSize(new Dimension(918, 764));
+          driver.findElement(By.name("username")).sendKeys("wds");
+          driver.findElement(By.cssSelector(".tab")).click();
+          driver.findElement(By.cssSelector(".login-btn-spinner")).click();
+          driver.findElement(By.name("current-password")).click();
+          driver.findElement(By.name("current-password")).sendKeys("1234");
+          driver.findElement(By.cssSelector(".login-btn-spinner")).click();
+      }
+
+
 
 
   }
