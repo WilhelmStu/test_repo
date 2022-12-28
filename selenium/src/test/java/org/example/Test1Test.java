@@ -48,16 +48,18 @@ public class Test1Test {
   }
   @Test
   public void test2() {
-    driver.get("http://localhost:" + port + "/");
-    driver.manage().window().setSize(new Dimension(1047, 855));
-    driver.findElement(By.cssSelector("html")).click();
-    // Test before click
-    assertEquals("Test 123", driver.findElement(By.id("1")).getText());
-    driver.findElement(By.id("button")).click();
+    driver.get("https://vdsm.stulpinger.at/");
+    for (int i = 0; i <3; i++) {
+      driver.manage().window().setSize(new Dimension(918, 764));
+      driver.findElement(By.name("username")).sendKeys("wds");
+      driver.findElement(By.cssSelector(".tab")).click();
+      driver.findElement(By.cssSelector(".login-btn-spinner")).click();
+      driver.findElement(By.name("current-password")).click();
+      driver.findElement(By.name("current-password")).sendKeys("1234");
+      driver.findElement(By.cssSelector(".login-btn-spinner")).click();
+    }
 
-    // Test after click
-    assertEquals("Test 321", driver.findElement(By.id("1")).getText());
-    assertEquals("Test 42", driver.findElement(By.id("2")).getText());
+
   }
 
   //@Test

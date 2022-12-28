@@ -10,13 +10,13 @@
 name: Selenium tests
 
 on: #[push] # to run it on every push on any branch
-  #workflow_run:
-  #  workflows: ["build_test"]
-  #  types:
-  #    - complete
-  #push: # todo remove -dev
-  #  branches:
-  #    - main
+ # workflow_run:
+ #   workflows: ["build_test"]
+ #   types:
+ #     - complete
+  push: # todo remove -dev
+    branches:
+      - dev
   pull_request:
     branches:
       - main
