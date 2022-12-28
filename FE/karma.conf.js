@@ -63,12 +63,12 @@ module.exports = function(config) {
       subdir : 'coverage'
     },
 
-    junitReporter: {
-      outputDir: './reports/junit', // results will be saved as $outputDir/$browserName.xml
-      outputFile: 'test-report.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
-      testFilePattern: '.spec.ts',
-      useBrowserName: false // add browser name to report and classes names
-    },
+   // junitReporter: {
+   //   outputDir: './reports/junit', // results will be saved as $outputDir/$browserName.xml
+   //   outputFile: 'test-report.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
+   //   testFilePattern: '.spec.ts',
+   //   useBrowserName: false // add browser name to report and classes names
+   // },
 
 
     // web server port
