@@ -15,12 +15,12 @@ module.exports = function(config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-firefox-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
       require('karma-requirejs'),
       require('@angular-devkit/build-angular/plugins/karma'),
-      require('karma-sonarqube-unit-reporter'),
-
+      require('karma-sonarqube-unit-reporter')
     ],
 
     // list of files / patterns to load in the browser
@@ -43,33 +43,33 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://www.npmjs.com/search?q=keywords:karma-reporter
-    reporters: ['progress', 'sonarqubeUnit', 'coverage'],
+    reporters: ['progress', 'sonarqubeUnit', 'coverage'], // sonarqubeUnit is needed for SonarCloud analysis
 
     jasmineHtmlReporter: {
       suppressAll: true // removes the duplicated traces
     },
 
+    // generic test report is required for SonarCloud analysis
     sonarQubeUnitReporter: {
       sonarQubeVersion: 'LATEST',
       outputFile: 'reports/report.xml',
+      overrideTestDescription: true,
       testPaths: ['./src'],
-      testFilePattern: '.spec.js',
+      testFilePattern: '.spec.ts',
       useBrowserName: false
     },
 
+    // lcov coverage is required for SonarCloud analysis
+    // test-summary will be displayed in terminal after test run
     coverageReporter: {
       type : 'lcov',
       dir : 'reports',
-      subdir : 'coverage'
+      subdir : 'coverage',
+      reporters: [
+        { type: 'lcov'},
+        { type: 'text-summary' }
+      ]
     },
-
-   // junitReporter: {
-   //   outputDir: './reports/junit', // results will be saved as $outputDir/$browserName.xml
-   //   outputFile: 'test-report.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
-   //   testFilePattern: '.spec.ts',
-   //   useBrowserName: false // add browser name to report and classes names
-   // },
-
 
     // web server port
     port: 9876,

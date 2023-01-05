@@ -14,9 +14,9 @@ on: #[push] # to run it on every push on any branch
  #   workflows: ["build_test"]
  #   types:
  #     - complete
-  push: # todo remove -dev
-    branches:
-      - dev
+ # push: # todo remove -dev
+ #   branches:
+ #     - dev
   pull_request:
     branches:
       - main

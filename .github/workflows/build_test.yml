@@ -74,32 +74,32 @@ jobs:
         reporter: java-junit
 
 
-  #FE:
-  #  name: Build and test frontend
-  #  runs-on: ubuntu-latest
-  #  defaults:
-  #    run:
-  #      working-directory: 'FE'
-  #  steps:
-  #  - name: Checkout code from repo
-  #    uses: actions/checkout@v3
-  #    with:
-  #      fetch-depth: 0
-  #  - name: show tree
-  #    run: tree
-  #  - name: Node.js setup
-  #    uses: actions/setup-node@v3
-  #    with:
-  #      node-version: 16
-  #      cache: 'npm'
-  #      cache-dependency-path: './FE/package-lock.json'
-  #  - run: npm install
-  #  - run: npm run test:ci
-  #  - name: SonarCloud Scan
-  #    uses: sonarsource/sonarcloud-github-action@master
-  #    with:
-  #      projectBaseDir: ./FE
-  #    env:
-  #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  FE:
+    name: Build and test frontend
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'FE'
+    steps:
+    - name: Checkout code from repo
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: show tree
+      run: tree
+    - name: Node.js setup
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+        cache-dependency-path: './FE/package-lock.json'
+    - run: npm ci
+    - run: npm run test:ci
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      with:
+        projectBaseDir: ./FE
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
